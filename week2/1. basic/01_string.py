@@ -67,6 +67,7 @@ if __name__ == "__main__":
     print(f"입력: \"{test1}\"")
     print(f"회문 여부: {result1}")
     print()
+
     
     # 테스트 케이스 2
     test2 = "race a car"
