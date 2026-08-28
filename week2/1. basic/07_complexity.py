@@ -28,6 +28,9 @@ def find_duplicates_brute_force(nums):
     시간 복잡도: O(n²)
     공간 복잡도: O(k) - k는 중복 원소 개수
     """
+    for i in nums:
+        for j in nums:
+            
     duplicates = []
     n = len(nums)
     

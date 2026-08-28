@@ -25,6 +25,20 @@
 """
 
 def is_palindrome(s):
+    context = []
+    for i in s:
+        if i.isalnum():
+            context.append(i.lower())
+        else:
+            continue
+    n = len(context)
+    for i in range(n//2):
+        if context[i] == context[n-i-1]:
+            continue
+        else:
+            return False
+    return True
+
     """
     문자열이 회문인지 판별하는 함수
     
