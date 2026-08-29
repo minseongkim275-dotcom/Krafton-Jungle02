@@ -1,3 +1,4 @@
+import math
 """
 [정수론 - 최대공약수(GCD)와 최소공배수(LCM)]
 
@@ -25,6 +26,9 @@
 """
 
 def gcd(a, b):
+    if b == 0:
+        return a
+    return gcd(b, a%b)
     """
     유클리드 호제법을 사용한 최대공약수 계산
     
@@ -40,6 +44,11 @@ def gcd(a, b):
     pass
 
 def gcd_iterative(a, b):
+    while b != 0:
+        m = b
+        b = a%b
+        a = m
+    return a
     """
     반복문을 사용한 최대공약수 계산
     
@@ -54,6 +63,8 @@ def gcd_iterative(a, b):
     pass
 
 def lcm(a, b):
+    #lcm(a, b) = (a × b) / gcd(a, b)
+    return (a*b)/gcd(a,b)
     """
     최소공배수 계산
     
@@ -77,6 +88,11 @@ def extended_gcd(a, b):
     Returns:
         (gcd, x, y) 튜플
     """
+    if b == 0:
+        return (a, 1, 0)
+    return extended_gcd(b, a%b) 
+        
+
     # TODO: 확장 유클리드 호제법 구현
     # base case: b가 0이면 (a, 1, 0) 반환    
     # recursive case
@@ -84,6 +100,12 @@ def extended_gcd(a, b):
     pass
 
 def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2,int(math.sqrt(n))+1):
+        if n % i == 0:
+            return False
+    return True
     """
     소수 판별
     

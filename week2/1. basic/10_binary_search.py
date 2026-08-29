@@ -16,13 +16,31 @@
 입력: arr = [1, 3, 5, 7, 9, 11, 13], target = 7
 출력: 3
 
-힌트:
-- left, right 포인터 사용
-- mid = (left + right) // 2
-- arr[mid]와 target 비교하여 범위 조정
 """
 
 def binary_search(arr, target):
+    left = 0
+    right = len(arr) - 1
+    arr.sort()
+    while left <= right:
+        num = (left + right) // 2
+        if target < arr[num]:
+            right = num -1
+        elif target > arr[num]:
+            left = num + 1
+        elif target == arr[num]:
+            return num
+    return -1
+
+
+        
+
+
+
+
+
+
+
     """
     이분 탐색 구현
     
@@ -33,8 +51,7 @@ def binary_search(arr, target):
     Returns:
         target의 인덱스 (없으면 -1)
     """
-    left = 0
-    right = len(arr) - 1
+    
     
     # TODO: left가 right보다 작거나 같을 때까지 반복
     ## 중간 인덱스 계산
