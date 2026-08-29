@@ -1,4 +1,2 @@
-for i in range(10):
-    for i in range(i,10):
-        print(i, end="")
-    print()
+ls = [1,2,3,4]
+print(ls[:3])
