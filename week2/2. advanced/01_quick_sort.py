@@ -21,18 +21,26 @@
 - 피벗보다 작은 원소는 왼쪽, 큰 원소는 오른쪽으로 분할
 - 재귀적으로 왼쪽과 오른쪽 부분 정렬
 """
+import random
 
 def partition(arr, low, high):
-    pivot = arr[high]
+    pivot_idx = random.randrange(low, high + 1)
+    pivot = arr[pivot_idx]
     count = low -1
-    for i in range(low,high):
+    for i in range(low,high+1):
+        if i == pivot_idx:
+            continue
         if arr[i] <= pivot:
             count +=1
-            tmp = arr[i]
-            arr[i] = arr[count]
-            arr[count] = tmp
-    arr[count+1], arr[high] = arr[high], arr[count+1]
-    return count + 1
+            if count == pivot_idx:       
+                pivot_idx = i 
+            arr[i], arr[count] = arr[count], arr[i]
+    if count < pivot_idx:
+        arr[count+1], arr[pivot_idx] = arr[pivot_idx], arr[count+1]
+        return count+1
+    else:
+        arr[count], arr[pivot_idx] = arr[pivot_idx], arr[count]
+        return count
         
 
 def quick_sort_helper(arr, low, high):
