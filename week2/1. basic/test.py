@@ -1,2 +1,2 @@
-ls = [1,2,3,4]
-print(ls[:3])
+for i in range(7):
+    print(i)
