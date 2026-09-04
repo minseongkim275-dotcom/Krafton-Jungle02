@@ -40,13 +40,20 @@ def create_graph(vertices, edges, directed=False):
     Returns:
         그래프 딕셔너리
     """
+    list = [[] for _ in range(vertices)]
+    graph = {}
     # TODO: 빈 그래프 초기화
-    pass
-    
-    # TODO: 간선 추가
-    ## 간선 추가 (u에서 v로)
-    ## 무방향 그래프면 반대 방향도 추가
-    pass
+  # in도 된다!
+    for i in range(vertices):
+        for vertice, edge in edges:
+            if vertice == i:
+                list[i].append(edge)
+            if directed == True:
+                continue
+            elif edge == i:
+                list[i].append(vertice)
+    for i in range(vertices):
+        graph[i] = list[i]
     
     return graph
 
