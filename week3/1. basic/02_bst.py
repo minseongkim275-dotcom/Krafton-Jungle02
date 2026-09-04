@@ -40,6 +40,17 @@ class TreeNode:
         self.right = None
 
 def search_bst(root, target):
+    if root == None:
+        return False
+    if target == root.value:
+        return True
+    elif target > root.value:
+        return search_bst(root.right,target)
+    else:
+        return search_bst(root.left,target)
+        
+
+
     """
     BST에서 값 검색
     
