@@ -52,9 +52,10 @@ def bfs(graph, start):
     pass
     while queue:
         n = queue.popleft()
-        queue.extend(graph[n])
+        
         if n in visited:
             continue
+        queue.extend(graph[n])
         visited.append(n)
     
     return visited
