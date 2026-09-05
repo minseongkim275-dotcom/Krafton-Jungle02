@@ -34,19 +34,21 @@ def select_meetings(meetings):
     """
     # TODO: 회의가 없으면 0 반환
     pass
-    
-    # TODO: 종료 시간 기준으로 정렬
-    pass
-    
-    selected = []
-    
-    # TODO: 첫 번째 회의 선택
-    pass
-    
-    # TODO: 나머지 회의들 확인
-    ## 이전 회의가 끝난 후 시작하는 회의만 선택
-    pass
-    
+    if meetings == None:
+        return 0
+    selected =[]
+    sorted = []
+    min = meetings[0][1]
+    for i,j in meetings:
+        if min >= j:
+            min = j
+            selected = [(i,j)]
+
+    for i,j in meetings:
+        if min < i:
+            min = j
+            selected.append((i,j))
+
     return len(selected), selected
 
 # 테스트 케이스
