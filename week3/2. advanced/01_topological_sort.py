@@ -29,6 +29,7 @@
 from collections import deque
 
 def topological_sort(vertices, edges):
+    
     """
     위상 정렬 (Kahn's Algorithm)
     
@@ -39,6 +40,36 @@ def topological_sort(vertices, edges):
     Returns:
         위상 정렬 순서
     """
+    graph = {i : [] for i in range(vertices)}
+    for i,j in edges:
+        graph[i].append(j)
+    setting = sum(graph.values(),[])
+    start = []
+    for i in graph.keys():
+        if i in setting:
+            continue
+        else:
+            start.append(i)
+    queue  = deque(start)
+    result = []
+    while queue:
+        n = queue.popleft()
+        if n in result:
+            continue
+        result.append(n)
+        del graph[n]
+        setting = sum(graph.values(),[])
+        start = []
+        for i in graph.keys():
+            if i in setting:
+                continue
+            else:
+                queue.append(i)
+    if len(result) != vertices:
+        return False
+
+
+
     # TODO: 그래프와 진입 차수 초기화
     pass
     
@@ -48,7 +79,7 @@ def topological_sort(vertices, edges):
     # TODO: 진입 차수가 0인 정점들을 큐에 추가
     pass
     
-    result = []
+    
     
     # TODO: 큐가 빌 때까지 반복
     ## 큐에서 정점 꺼내기
