@@ -75,11 +75,25 @@ def dijkstra(n: int, edges: list, start: int) -> list:
     start: 출발 정점
     반환: 길이 n 의 거리 리스트 (도달 불가 = float('inf'))
     """
-    # TODO: 인접 리스트 graph 구성 (graph[u] = [(v, w), ...])
-    # TODO: dist 를 INF 로 초기화하고 dist[start] = 0
-    # TODO: 우선순위 큐(heapq)로 BFS-like 최단경로 탐색
-    # TODO: dist 반환
-    pass
+    if edges == []:
+        return [0]
+    
+    heap = [(0, start)]
+    graph = {i : [] for i in range(n+1)}
+    for u, v, w in edges:
+        graph[u].append((v,w))
+    
+    INF = float('inf')  # 파이썬에서 무한대를 표현하는 방법
+    dist = [INF] * (n)
+    dist[start] = 0
+    while heap:
+        (d, u) = heapq.heappop(heap)
+        if d > dist[u]: continue 
+        for v, w in graph[u]:
+            if dist[u] + w < dist[v]:
+                dist[v] = dist[u] + w
+                heapq.heappush(heap,(dist[v],v))
+    return dist
 
 
 def _format(dist):

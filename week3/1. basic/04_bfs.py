@@ -33,30 +33,14 @@ BFS: [0, 1, 2, 3]
 from collections import deque
 
 def bfs(graph, start):
-    """
-    너비 우선 탐색
-    
-    Args:
-        graph: 그래프 딕셔너리
-        start: 시작 정점
-    
-    Returns:
-        방문 순서 리스트
-    """
-    visited = []
-    start_que = []
-    queue = deque(start_que)
-    queue.append(start)
-    # TODO: 큐 생성 및 시작 정점 추가
-    ## 방문한 정점 집합
-    pass
+    visited = [start]
+    queue = deque(visited)
     while queue:
         n = queue.popleft()
-        
-        if n in visited:
-            continue
-        queue.extend(graph[n])
-        visited.append(n)
+        for neighbor in graph[n]:
+            if neighbor not in visited:
+                visited.append(neighbor)
+                queue.append(neighbor)
     
     return visited
 
