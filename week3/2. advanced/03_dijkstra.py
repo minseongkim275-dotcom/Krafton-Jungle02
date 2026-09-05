@@ -94,12 +94,12 @@ def dijkstra(n: int, edges: list, start: int) -> list:
                 dist[v] = dist[u] + w
                 heapq.heappush(heap,(dist[v],v))
     return dist
-
+#
 
 def _format(dist):
     """출력 표기를 위한 헬퍼: float('inf') 는 'INF' 로 보여줌"""
     return [('INF' if x == INF else x) for x in dist]
-
+ 
 
 if __name__ == "__main__":
     print("[테스트 1] 예시 그래프 (5개 정점)")
